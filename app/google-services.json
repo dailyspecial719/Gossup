@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430222343916",
+    "project_id": "gossup-backend",
+    "storage_bucket": "gossup-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430222343916:android:e0a31057fcece7f77f2fc9",
+        "android_client_info": {
+          "package_name": "com.example.gossup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN1UFVzLL9TDGckC8yBVfVcmNg18wZ9kg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
