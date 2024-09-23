@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.gossup.utils.FirebaseUtil;
+
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,9 +30,14 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, LoginPhoneNumberActivity.class));
+                if (FirebaseUtil.isLoggedIn()){
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                }else{
+                    startActivity(new Intent(SplashActivity.this, LoginPhoneNumberActivity.class));
+                }
+                finish();
             }
-        }, 3500);
+        }, 1500);
     }
 
 
