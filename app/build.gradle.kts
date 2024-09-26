@@ -46,4 +46,5 @@ dependencies {
     implementation(libs.ccp)
     implementation("com.google.firebase:firebase-auth")
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+    implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
 }
