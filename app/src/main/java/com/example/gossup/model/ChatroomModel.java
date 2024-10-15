@@ -1,6 +1,8 @@
 package com.example.gossup.model;
 
-import java.security.Timestamp;
+
+import com.google.firebase.Timestamp;
+
 import java.util.List;
 
 public class ChatroomModel {
@@ -8,19 +10,16 @@ public class ChatroomModel {
     String chatroomId;
     List<String> userIds;
     Timestamp lastMessageTimeStamp;
-    String laseMessageSenderId;
+    String lastMessageSenderId;
 
     public ChatroomModel() {
     }
 
-    public ChatroomModel(String chatroomId, List<String> userIds, Timestamp lastMessageTimeStamp, String laseMessageSenderId) {
+    public ChatroomModel(String chatroomId, List<String> userIds, Timestamp lastMessageTimeStamp, String lastMessageSenderId) {
         this.chatroomId = chatroomId;
         this.userIds = userIds;
         this.lastMessageTimeStamp = lastMessageTimeStamp;
-        this.laseMessageSenderId = laseMessageSenderId;
-    }
-
-    public ChatroomModel(String chatroomId, List<String> list, com.google.firebase.Timestamp now, String laseMessageSenderId) {
+        this.lastMessageSenderId = lastMessageSenderId;
     }
 
     public String getChatroomId() {
@@ -47,11 +46,11 @@ public class ChatroomModel {
         this.lastMessageTimeStamp = lastMessageTimeStamp;
     }
 
-    public String getLaseMessageSenderId() {
-        return laseMessageSenderId;
+    public String getLastMessageSenderId() {
+        return lastMessageSenderId;
     }
 
-    public void setLaseMessageSenderId(String laseMessageSenderId) {
-        this.laseMessageSenderId = laseMessageSenderId;
+    public void setLastMessageSenderId(String laseMessageSenderId) {
+        this.lastMessageSenderId = laseMessageSenderId;
     }
 }

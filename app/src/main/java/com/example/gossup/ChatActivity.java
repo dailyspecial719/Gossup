@@ -7,18 +7,22 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gossup.model.ChatMessageModel;
 import com.example.gossup.model.ChatroomModel;
 import com.example.gossup.model.UserModel;
 import com.example.gossup.utils.AndroidUtil;
 import com.example.gossup.utils.FirebaseUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Arrays;
@@ -70,9 +74,34 @@ public class ChatActivity extends AppCompatActivity {
 
         otherUsername.setText(otherUser.getUsername());
 
+
+        sendMessage.setOnClickListener((v ->{
+            String message = chatMessageInput.getText().toString().trim();
+            if(message.isEmpty())
+                return;
+            sendMessageToUser(message);
+
+        }));
+
         getOrCreateChatroomModel();
+    }
 
+    void sendMessageToUser(String message){
+        chatroomModel.setLastMessageTimeStamp(Timestamp.now());
+        chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
+        FirebaseUtil.getChatroomReference(chatroomId).set(chatroomModel);
 
+        ChatMessageModel chatMessageModel = new ChatMessageModel(message, FirebaseUtil.currentUserId(),Timestamp.now());
+        FirebaseUtil.getChatroomMessageReference(chatroomId).add(chatMessageModel)
+                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        if (task.isSuccessful()){
+                            chatMessageInput.setText("");
+                        }
+
+                    }
+                });
     }
 
     void getOrCreateChatroomModel() {

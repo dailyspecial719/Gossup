@@ -53,12 +53,16 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_layout"/>
 
+
+
+
     <RelativeLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:padding="8dp">
+
 
 
         <EditText
